@@ -16,7 +16,7 @@ jobs:
       - name: Check out the code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Set up Node.js 20
         uses: actions/setup-node@v3
         with:
           node-version: '20'  # Adjust this to your project's Node.js version
