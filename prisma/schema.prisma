@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id            Int       @id @default(autoincrement())
+  username      String    @unique @db.VarChar(50)
+  email         String    @unique @db.VarChar(255)
+  password      String    @db.VarChar(255)
+  firstName     String?   @db.VarChar(100)
+  lastName      String?   @db.VarChar(100)
+  address       String?   @db.Text
+  city          String?   @db.VarChar(100)
+  state         String?   @db.VarChar(100)
+  postalCode    String?   @db.VarChar(100)
+  country       String?   @db.VarChar(100)
+  role          String?   @default("customer") @db.VarChar(50)
+  status        String?   @default("active") @db.VarChar(50)
+  createdAt     DateTime? @default(now())
+  createdBy     Int?
+  updatedAt     DateTime? @default(now())
+  updatedBy     Int?
+  isDeleted     Boolean?  @default(false)
+  deletedBy     Int?
+  deletedAt     DateTime?
+  isLocked      Boolean?  @default(false)
+  lockedBy      Int?
+  lockedAt      DateTime?
+  lastLogin     DateTime?
+  emailVerified Boolean?  @default(false)
+  phoneVerified Boolean?  @default(false)
+}

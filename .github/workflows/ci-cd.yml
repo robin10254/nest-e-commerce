@@ -38,6 +38,8 @@ jobs:
       # Optional: Build the application
       - name: Build application
         run: npm run build
+        
+      # Optional: Need to learn, how to run all db scripts on client db
 
       # Optional: Deploy step
       # Uncomment and configure according to your deployment method
